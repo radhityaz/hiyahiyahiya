@@ -1,40 +1,52 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meme and Music Website</title>
+    <title>Meme dengan Musik</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            background-color: #f0f0f0;
+        body { 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            min-height: 100vh; 
+            background-color: #f0f0f0; 
         }
-        .container {
-            text-align: center;
+        img { 
+            max-width: 80%; 
+            height: auto; 
+            border-radius: 10px; 
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1); 
         }
-        img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-        }
-        audio {
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50; /* Green */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
             margin-top: 20px;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <img src="https://cdn.idntimes.com/content-images/community/2023/07/img-20230715-115827-6f73be0ad715324e357bf878182ef89d-78f3d9612d882dac54793d0239cb14ff_600x400.jpg" alt="Funny Meme">
-        <audio controls autoplay loop>
-            <source src="https://docs.google.com/file/d/0B8wzyiLr_Du0dWVxQ2NCcE9wTHM/edit?resourcekey=0-wJG-Ay38IiZ2R-Eq3Jw9dg" type="audio/mpeg">
-            Your browser does not support the audio element.
-        </audio>
-    </div>
+    <img src="assets/img-20230715-115827-6f73be0ad715324e357bf878182ef89d-78f3d9612d882dac54793d0239cb14ff_600x400.jpg" alt="Meme Lucu">
+
+    <audio id="backgroundMusic" loop>
+        <source src="assets/Mars ITB.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <button id="playButton">Play Musik</button>
+
+    <script>
+        const backgroundMusic = document.getElementById('backgroundMusic');
+        const playButton = document.getElementById('playButton');
+
+        playButton.addEventListener('click', () => {
+            backgroundMusic.play().catch(error => {
+                console.error('Gagal memutar audio:', error);
+            });
+            playButton.style.display = 'none'; // Sembunyikan tombol setelah musik diputar
+        });
+    </script>
 </body>
 </html>
